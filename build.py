@@ -1,1 +1,2 @@
-build_mode = "Docker"
+build_mode = "Development"
+db_status = 0

@@ -14,7 +14,7 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQL = "postgresql://postgres:postgres@localhost:5432/postgres"
+    SQL = "postgresql://postgres:postgres@localhost:5432/data"
 
 
 class DockerConfig(Config):
