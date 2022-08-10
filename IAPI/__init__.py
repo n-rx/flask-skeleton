@@ -4,7 +4,6 @@ from sqlalchemy import create_engine
 from build import build_mode
 
 import config
-
 db = SQLAlchemy()
 
 
@@ -22,7 +21,6 @@ def create_app():
 
     db.init_app(app)
     app.e = create_engine(app.config['SQL'], pool_size=5, pool_recycle=6)
-
     from IAPI.api.Views.testAPI import test_api
     app.register_blueprint(test_api)
 
