@@ -10,3 +10,5 @@ COPY requirements.txt /flask_skeleton/
 RUN pip install -r requirements.txt
 
 COPY . /flask_skeleton/
+
+CMD ["python", "./app.py"]
