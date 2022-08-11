@@ -31,7 +31,7 @@ def get_data():
         test = Test.get_all()
         data = Test.to_dict_multy(test)
     else:
-        data = "offline data"
+        data = "Data"
     return jsonify({
         "success": True,
         "Data": data
