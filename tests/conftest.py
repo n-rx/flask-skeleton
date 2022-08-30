@@ -1,14 +1,14 @@
 import pytest
 import config
-from IAPI import create_app
+from API import create_app
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
-import contextlib
-from sqlalchemy import MetaData
+from config import Config
 
 
 @pytest.fixture
 def app():
+	Config.BUILD_MODE = "test"
 	app = create_app()
 	app.test_client()
 	app_settings = config.TestingConfig

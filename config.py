@@ -1,28 +1,39 @@
+import os.path
+from dotenv import load_dotenv
+from pathlib import Path
+
+load_dotenv()
+env_path = Path('.')/'.env'
+load_dotenv(dotenv_path=env_path)
+
+
 class Config(object):
+    BUILD_MODE = os.getenv("BUILD_MODE")
     TESTING = False
-    SECRET_KEY = "need_to_be_changed"
-    SQL = "postgresql://postgres:postgres@localhost:5432/postgres"
+    SECRET_KEY = os.getenv("SECRET_KEY")
     CSRF_ENABLED = True
-
-
-class ProductionConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-    SQL = "postgresql://postgres:postgres@localhost:5432/postgres"
+    DB_STATUS = bool(os.getenv("DB_STATUS"))
 
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQL = "postgresql://postgres:postgres@localhost:5432/data"
+    SQL = os.getenv("DEV_DB")
 
 
 class DockerConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQL = "postgresql://postgres:postgres@postgres:5432/data"
+    SQL = os.getenv("DOCKER_DB")
+
 
 
 class TestingConfig(Config):
     TESTING = True
-    SQL = "postgresql://postgres:postgres@localhost:5432/api_testing"
+    SQL = os.getenv("TEST_DB")
+
+
+class ProductionConfig(Config):
+    DEVELOPMENT = False
+    DEBUG = False
+    SQL = os.getenv('PROD_DB')

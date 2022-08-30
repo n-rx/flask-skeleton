@@ -1,4 +1,4 @@
-from IAPI import db
+from API import db
 
 
 class Test(db.Model):
